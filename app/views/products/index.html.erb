@@ -1,7 +1,10 @@
 <h1>Products</h2>
-
+<ul>
 <% @products.each do |p| %>
-  <%= "#{p.name} | $#{p.price_in_cents/100}" %>
-  <%= "#{p.description}" %>
+  <li>
+    <%= "#{p.name} | $#{p.formatted_price}" %>
+    <%= "#{p.description}" %>
+  </li>
 <% end %>
+</ul>
   
