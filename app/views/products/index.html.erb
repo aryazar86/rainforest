@@ -1,9 +1,10 @@
 <h1>Products</h2>
+<%= link_to "Add a new product", "products/new" %>
 <ul>
 <% @products.each do |p| %>
   <li>
-    <%= "#{p.name} | $#{p.formatted_price}" %>
-    <%= "#{p.description}" %>
+    <%= image_tag p.product_picture_url.to_s, class:"avatar" %>
+  <%= link_to "#{p.name}", product_path(p.id) %> <%= "| $#{p.formatted_price}" %>
   </li>
 <% end %>
 </ul>

@@ -9,7 +9,7 @@ Rainforest::Application.routes.draw do
   # get "users/create"
   resources :products
 
-  resources :users, :only => [:new, :create]
+  resources :users
 
   resources :sessions, :only => [:new, :create, :destroy]
 

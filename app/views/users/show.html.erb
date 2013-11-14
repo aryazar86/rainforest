@@ -1,0 +1,9 @@
+<h1> Welcome, <%= @user.name %> </h1>
+<%= image_tag @user.image_url.to_s, class:"avatar" %>
+<p><%= link_to "Edit your Profile", edit_user_path(@user) %></p>
+<h3> Comments made </h3>
+<% @user.reviews.each do |r| %>
+  
+  <p> Comment made for <%= link_to r.product.name, product_path(r.product.id) %> on <%= r.product.created_at %>: <em><%= r.comment %></em></p>
+<% end %>
+
