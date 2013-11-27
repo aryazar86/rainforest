@@ -1,25 +1,22 @@
 <h1><%= "#{@product.name} | $#{@product.formatted_price}" %></h1>
 <%= image_tag @product.product_picture_url.to_s, class:"avatar" %>
-<%= "#{@product.description}" %>
+<div class:"product-description"><%= @product.description %></div>
 
   <h3>Reviews</h3>
 
-  <% @product.reviews.each do |review| %>
-    <p>
-      <%= review.comment %>
-      <br>
-      <% if review.user != nil %>
-        <em> by <%= review.user.name %></em>
-        Added on: <%= review.created_at %>
-      <% end %>
-    </p>
-  <% end %>
+  <div id="review-list">
+      <%= render :partial => "reviews" %>
+  </div>
 
 <% if current_user %>
+  
+  <div id="review-form-errors">
+    <%= render :partial => "/products/review_form_errors" %>
+  </div>
 
   <h4>New Review</h4>
 
-  <%= form_for([@product, @review]) do |f| %>
+  <%= form_for [@product, @review], :remote => true do |f| %>
     <% if @review.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>

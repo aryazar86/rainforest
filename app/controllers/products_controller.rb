@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :ensure_logged_in, :only => [:new, :edit, :create, :update, :destroy]
 
   def index
     @products = Product.all
@@ -29,6 +30,7 @@ class ProductsController < ApplicationController
     else
       render "new"
     end
+    
   end
 
   def update

@@ -1,11 +1,18 @@
-<h1>Products</h2>
+<h2>Products</h2>
 <%= link_to "Add a new product", "products/new" %>
-<ul>
-<% @products.each do |p| %>
-  <li>
-    <%= image_tag p.product_picture_url.to_s, class:"avatar" %>
-  <%= link_to "#{p.name}", product_path(p.id) %> <%= "| $#{p.formatted_price}" %>
-  </li>
-<% end %>
-</ul>
+<div class="products-container">
+  <div class="products-inner-container">
+    <ul class="products-front">
+    <% @products.each do |p| %>
+      <li>
+          <div class="product-container">
+            <div class="product-info"><%= image_tag p.product_picture_url.to_s, class:"avatar" %></div>
+            <div class="product-info"><%= link_to "#{p.name}", product_path(p.id), class:"product-title" %></div>
+            <div class="product-info"><%= "$#{p.formatted_price}" %></div>
+          </div>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
   
