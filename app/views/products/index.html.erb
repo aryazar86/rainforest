@@ -1,18 +1,13 @@
 <h2>Products</h2>
-<%= link_to "Add a new product", "products/new" %>
+<% if current_user %>
+  <%= link_to "Add a new product", "products/new" %>
+<% end %>
 <div class="products-container">
   <div class="products-inner-container">
+      <div style="text-align:center"><small><%= page_entries_info @products %></small></div>
     <ul class="products-front">
-    <% @products.each do |p| %>
-      <li>
-          <div class="product-container">
-            <div class="product-info"><%= image_tag p.product_picture_url.to_s, class:"avatar" %></div>
-            <div class="product-info"><%= link_to "#{p.name}", product_path(p.id), class:"product-title" %></div>
-            <div class="product-info"><%= "$#{p.formatted_price}" %></div>
-          </div>
-      </li>
-    <% end %>
+      <%= render @products %>
     </ul>
-  </div>
+<div style="text-align:center"><%= paginate @products %></div>
 </div>
   

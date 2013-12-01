@@ -2,7 +2,13 @@ class ProductsController < ApplicationController
   before_filter :ensure_logged_in, :only => [:new, :edit, :create, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.order('products.created_at DESC').page(params[:page])
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
+
   end
 
   def show
