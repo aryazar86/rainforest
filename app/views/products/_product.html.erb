@@ -1,0 +1,8 @@
+<li>
+    <div class="product-container">
+      <div class="product-info"><%= image_tag product.product_picture_url.to_s, class:"avatar" %></div>
+      <div class="product-info"><%= link_to "#{product.name}", product_path(product.id), class:"product-title open-event", title:"#{product.description}" %></div>
+      <div class="product-info"><%= "$#{product.formatted_price}" %></div>
+      <div class="product-info"><%= truncate(product.description, length: 10) %></div>
+      </div>
+</li>
